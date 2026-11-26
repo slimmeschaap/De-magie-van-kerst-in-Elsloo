@@ -2,105 +2,370 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>De magie van kerst in Elsloo</title>
-  <style>
-    * { box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10291f">
+<title>De magie van Kerst in Elsloo</title>
+<style>
+* { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      font-family: Georgia, serif;
-      background: #10291f;
-      color: #fff8e9;
-      text-align: center;
-    }
+html { scroll-behavior: smooth; }
 
-    header {
-      padding: 85px 20px;
-      background: linear-gradient(#071b15aa, #071b15dd),
-        radial-gradient(circle at center, #47734b, #10291f);
-    }
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #10291f;
+  color: #fff8e9;
+  line-height: 1.7;
+}
 
-    h1 {
-      font-size: clamp(38px, 7vw, 68px);
-      color: #f5d98a;
-      margin-bottom: 15px;
-    }
+header {
+  min-height: 620px;
+  padding: 100px 20px 85px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 25%, #426b46 0%, transparent 48%),
+    linear-gradient(180deg, #071b15, #173b2a 75%, #10291f);
+}
 
-    header p {
-      font-size: 21px;
-      line-height: 1.6;
-    }
+header:before {
+  content: "✦       ✧       ✦       ✧       ✦";
+  position: absolute;
+  top: 35px;
+  color: #f5d98a;
+  font-size: 23px;
+  letter-spacing: 12px;
+  opacity: .85;
+}
 
-    .button {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 15px 28px;
-      background: #b52c36;
-      color: white;
-      text-decoration: none;
-      border-radius: 30px;
-    }
+header:after {
+  content: "❄       ✧       ❄       ✧       ❄";
+  position: absolute;
+  bottom: 35px;
+  color: #fff8e9;
+  font-size: 20px;
+  letter-spacing: 10px;
+  opacity: .6;
+}
 
-    section {
-      max-width: 850px;
-      margin: auto;
-      padding: 55px 22px;
-    }
+.hero-icon {
+  font-size: 68px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 18px #f5d98a);
+}
 
-    h2 { color: #f5d98a; font-size: 32px; }
+h1 {
+  font-size: clamp(39px, 7vw, 70px);
+  line-height: 1.1;
+  color: #f5d98a;
+  margin: 10px 0 20px;
+  text-shadow: 0 3px 20px #0008;
+}
 
-    .card {
-      background: #1b4030;
-      border: 1px solid #c5a75a;
-      border-radius: 15px;
-      padding: 25px;
-      margin: 20px 0;
-    }
+.subtitle {
+  font-size: 22px;
+  max-width: 650px;
+  margin: 0 auto;
+}
 
-    footer {
-      padding: 30px;
-      background: #091a13;
-      color: #d9c99d;
-    }
-  </style>
+.button {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 15px 30px;
+  background: #b52c36;
+  color: white;
+  text-decoration: none;
+  border-radius: 35px;
+  transition: .3s;
+  font-size: 17px;
+}
+
+.button:hover {
+  background: #d34850;
+  transform: translateY(-3px);
+}
+
+section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 65px 22px;
+  text-align: center;
+}
+
+h2 {
+  color: #f5d98a;
+  font-size: clamp(27px, 4vw, 37px);
+  line-height: 1.3;
+}
+
+.intro {
+  max-width: 720px;
+  margin: 20px auto;
+  font-size: 18px;
+}
+
+.characters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 650px;
+  margin: 35px auto;
+}
+
+.character {
+  background: #1b4030;
+  border: 1px solid #c5a75a;
+  border-radius: 20px;
+  padding: 25px 15px;
+}
+
+.character-icon {
+  font-size: 65px;
+}
+
+.character h3 {
+  color: #f5d98a;
+  font-size: 24px;
+  margin: 8px 0;
+}
+
+.story {
+  background:
+    radial-gradient(ellipse at center, #234d37, #10291f);
+  border-top: 1px solid #c5a75a;
+  border-bottom: 1px solid #c5a75a;
+}
+
+.story-box {
+  max-width: 750px;
+  margin: 30px auto;
+  padding: 30px;
+  background: #1b4030;
+  border-radius: 18px;
+  border: 1px solid #c5a75a;
+  font-size: 18px;
+}
+
+.stops {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 35px;
+  text-align: left;
+}
+
+.stop {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  background: #1b4030;
+  border: 1px solid #9d8953;
+  padding: 20px;
+  border-radius: 15px;
+  color: #fff8e9;
+  text-decoration: none;
+  transition: .25s;
+}
+
+.stop:hover {
+  background: #28543d;
+  transform: translateY(-3px);
+  border-color: #f5d98a;
+}
+
+.stop-number {
+  min-width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: #b52c36;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 19px;
+}
+
+.stop strong {
+  color: #f5d98a;
+  display: block;
+  font-size: 17px;
+}
+
+.stop small {
+  display: block;
+  color: #e8ddc4;
+  font-size: 14px;
+}
+
+.final {
+  background: linear-gradient(#173b2a, #091a13);
+  border-top: 1px solid #c5a75a;
+}
+
+.final-symbol {
+  font-size: 75px;
+  margin: 15px;
+}
+
+footer {
+  padding: 35px 20px;
+  background: #091a13;
+  color: #d9c99d;
+  text-align: center;
+}
+
+footer p { margin: 7px; }
+
+@media(max-width: 600px) {
+  header { min-height: 540px; padding: 90px 18px; }
+  .stops { grid-template-columns: 1fr; }
+  .characters { gap: 12px; }
+  .character { padding: 18px 8px; }
+  .character-icon { font-size: 48px; }
+  .story-box { padding: 22px 17px; }
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <div style="font-size:50px;">🎄 ✨ 🎅</div>
-  <h1>De magie van kerst in Elsloo</h1>
-  <p>Beleef samen de warmte, gezelligheid en verwondering van kerst.</p>
-  <a class="button" href="#wandeling">Ontdek de kerstwandeling</a>
+  <div class="hero-icon">🎄✨</div>
+  <p>Een betoverend avontuur voor jong en oud</p>
+  <h1>De magie van<br>Kerst in Elsloo</h1>
+  <p class="subtitle">
+    Ga mee met Noor en Finn en ontdek de verborgen kerstmagie
+    van ons prachtige dorp.
+  </p>
+  <a class="button" href="#verhaal">Ontdek het kerstverhaal</a>
 </header>
 
-<section id="wandeling">
+<section id="verhaal">
   <h2>Welkom in onze magische kerstwereld</h2>
-  <p>
-    Laat je meevoeren door de kerstsfeer in het prachtige Elsloo.
-    Ontdek bijzondere plekjes, geniet van lichtjes en beleef
-    samen een onvergetelijke kerstwandeling.
+  <p class="intro">
+    Er hangt iets bijzonders in de lucht...
+    De lichtjes fonkelen, de straten zijn versierd
+    en ergens boven Elsloo ontbreekt een heel bijzondere ster.
   </p>
 
-  <div class="card">
-    <h2>✨ De kerstwandeling</h2>
-    <p>Ontdek binnenkort alle bijzondere stopplaatsen langs onze route.</p>
+  <div class="story-box">
+    <p>
+      Maak kennis met Noor en Finn, twee vriendjes uit Elsloo.
+      Op een koude winteravond ontdekken ze dat de grote Kerstster
+      haar licht verloren heeft.
+    </p>
+    <p>
+      Zonder die ster kan de kerstman Kerstmis niet laten beginnen!
+      Samen gaan Noor en Finn op zoek naar de verdwenen kerstmagie.
+    </p>
+    <p>
+      Wandel met hen mee, ontdek bijzondere plekjes en beleef
+      een kerstverhaal dat je niet snel zult vergeten.
+    </p>
+    <p><strong>Zijn jullie klaar voor het avontuur?</strong></p>
   </div>
 
-  <div class="card">
-    <h2>⭐ Magische momenten</h2>
-    <p>Laat je verrassen door de gezelligheid en de magie van kerst.</p>
-  </div>
-
-  <div class="card">
-    <h2>❤️ Samen genieten</h2>
-    <p>Een bijzondere belevenis voor jong en oud.</p>
+  <div class="characters">
+    <div class="character">
+      <div class="character-icon">👧🏻</div>
+      <h3>Noor</h3>
+      <p>6 jaar</p>
+      <p>Lief, nieuwsgierig en dapper. Noor ziet overal kleine wondertjes.</p>
+    </div>
+    <div class="character">
+      <div class="character-icon">👦🏻</div>
+      <h3>Finn</h3>
+      <p>7 jaar</p>
+      <p>Vrolijk, avontuurlijk en een beetje ondeugend. Finn gaat graag op ontdekking.</p>
+    </div>
   </div>
 </section>
 
+<section class="story">
+  <h2>✨ De kerstwandeling</h2>
+  <p class="intro">
+    Volg de route door het betoverende Elsloo.
+    Scan onderweg de QR-codes en ontdek bij iedere stop
+    een nieuw hoofdstuk van het avontuur.
+  </p>
+
+  <div class="stops">
+    <a class="stop" href="#stop1">
+      <span class="stop-number">1</span>
+      <span><strong>De Madammerweide</strong>
+      <small>De grote kerstboom</small></span>
+    </a>
+
+    <a class="stop" href="#stop2">
+      <span class="stop-number">2</span>
+      <span><strong>De Dorpstraat</strong>
+      <small>De gezelligste kerstmarkt</small></span>
+    </a>
+
+    <a class="stop" href="#stop3">
+      <span class="stop-number">3</span>
+      <span><strong>Sint-Augustinuskerk</strong>
+      <small>Het mooiste kerstlied</small></span>
+    </a>
+
+    <a class="stop" href="#stop4">
+      <span class="stop-number">4</span>
+      <span><strong>De Maas</strong>
+      <small>Het geheim van de verdwenen burcht</small></span>
+    </a>
+
+    <a class="stop" href="#stop5">
+      <span class="stop-number">5</span>
+      <span><strong>De kasteelvijver</strong>
+      <small>Een betoverd winterfeest</small></span>
+    </a>
+
+    <a class="stop" href="#stop6">
+      <span class="stop-number">6</span>
+      <span><strong>Het kabouterhuisje</strong>
+      <small>De geheime fabriek van de kerstman</small></span>
+    </a>
+
+    <a class="stop" href="#stop7">
+      <span class="stop-number">7</span>
+      <span><strong>Het theehuisje</strong>
+      <small>De sneeuwpoppenwedstrijd</small></span>
+    </a>
+
+    <a class="stop" href="#stop8">
+      <span class="stop-number">8</span>
+      <span><strong>De ingang van het kasteelpark</strong>
+      <small>Samen onderweg</small></span>
+    </a>
+
+    <a class="stop" href="#stop9">
+      <span class="stop-number">9</span>
+      <span><strong>Het Slimme Schaap</strong>
+      <small>De kerststal komt tot leven</small></span>
+    </a>
+  </div>
+</section>
+
+<section id="samen">
+  <h2>❤️ Samen genieten</h2>
+  <p class="intro">
+    Kerstmis is meer dan lichtjes en cadeautjes.
+    Het gaat om samen zijn, elkaar helpen, lachen en mooie
+    herinneringen maken.
+  </p>
+  <div class="final-symbol">⭐</div>
+  <p>Help Noor en Finn om de kerstmagie terug te brengen naar Elsloo!</p>
+  <a class="button" href="#verhaal">Begin het avontuur</a>
+</section>
+
 <footer>
-  <p>De magie van kerst in Elsloo</p>
+  <p><strong>De magie van Kerst in Elsloo</strong></p>
+  <p>Een betoverende kerstwandeling voor jong en oud.</p>
   <p>Met liefde en warmte georganiseerd ❤️</p>
 </footer>
 
