@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -125,8 +124,32 @@ h2 {
   padding: 25px 15px;
 }
 
-.character-icon {
-  font-size: 65px;
+.character-icon img {
+  width: 150px;
+  height: 190px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+
+.story-characters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 4px auto 18px;
+}
+
+.story-characters img {
+  width: 76px;
+  height: 112px;
+  object-fit: contain;
+  border-radius: 9px;
+}
+
+.story-characters span {
+  font-size: 48px;
 }
 
 .character h3 {
@@ -272,19 +295,14 @@ footer p { margin: 7px; }
 
   <div class="characters">
     <div class="character">
-      <div class="character">
-  <img src="assets/noor.png" alt="Noor">
-  <span>Noor</span>
-</div>
+      <div class="character-icon"><img src="assets/noor.png" alt="Noor, 6 jaar"></div>
       <h3>Noor</h3>
       <p>6 jaar</p>
       <p>Lief, nieuwsgierig en dapper. Noor ziet overal kleine wondertjes.</p>
     </div>
     <div class="character">
-     <div class="character">
-  <img src="assets/finn.png" alt="Finn">
-  <span>Finn</span>
-</div>
+      <div class="character-icon"><img src="assets/finn.png" alt="Finn, 7 jaar"></div>
+      <h3>Finn</h3>
       <p>7 jaar</p>
       <p>Vrolijk, avontuurlijk en een beetje ondeugend. Finn gaat graag op ontdekking.</p>
     </div>
@@ -384,7 +402,7 @@ footer p { margin: 7px; }
     border:1px solid #c5a75a;
     border-radius:18px;
   ">
-    <div style="font-size:65px;">👧🏻 🎄 👦🏻</div>
+    <div class="story-characters"><img src="assets/noor.png" alt="Noor"><span>🎄</span><img src="assets/finn.png" alt="Finn"></div>
 
     <p>
       Noor en Finn kwamen aan bij de Madammerweide.
@@ -489,7 +507,7 @@ footer p { margin: 7px; }
     border:1px solid #c5a75a;
     border-radius:18px;
   ">
-    <div style="font-size:65px;">👧🏻 🎄 👦🏻</div>
+    <div class="story-characters"><img src="assets/noor.png" alt="Noor"><span>🎄</span><img src="assets/finn.png" alt="Finn"></div>
 
     <p>
       Noor en Finn volgden het geluid en kwamen in de Dorpstraat.
@@ -601,7 +619,7 @@ footer p { margin: 7px; }
     border:1px solid #c5a75a;
     border-radius:18px;
   ">
-    <div style="font-size:65px;">👧🏻 🎶 👦🏻</div>
+    <div class="story-characters"><img src="assets/noor.png" alt="Noor"><span>🎶</span><img src="assets/finn.png" alt="Finn"></div>
 
     <p>
       Noor en Finn liepen de trap omhoog naar
@@ -695,7 +713,7 @@ footer p { margin: 7px; }
     border:1px solid #c5a75a;
     border-radius:18px;
   ">
-    <div style="font-size:65px;">👧🏻 🛷 👦🏻</div>
+    <div class="story-characters"><img src="assets/noor.png" alt="Noor"><span>🛷</span><img src="assets/finn.png" alt="Finn"></div>
 
     <p>
       Noor en Finn kwamen op een plek waar ze omhoog
@@ -796,7 +814,7 @@ footer p { margin: 7px; }
     border:1px solid #c5a75a;
     border-radius:18px;
   ">
-    <div style="font-size:65px;">👧🏻 ⛸️ 👦🏻</div>
+    <div class="story-characters"><img src="assets/noor.png" alt="Noor"><span>⛸️</span><img src="assets/finn.png" alt="Finn"></div>
 
     <p>
       In het kasteelpark kwamen Noor en Finn bij de vijver.
@@ -893,7 +911,7 @@ footer p { margin: 7px; }
     border:1px solid #c5a75a;
     border-radius:18px;
   ">
-    <div style="font-size:65px;">👧🏻 🏠 👦🏻</div>
+    <div class="story-characters"><img src="assets/noor.png" alt="Noor"><span>🏠</span><img src="assets/finn.png" alt="Finn"></div>
 
     <p>
       Plotseling ontdekten Noor en Finn een klein huisje
@@ -1003,7 +1021,7 @@ footer p { margin: 7px; }
     border:1px solid #c5a75a;
     border-radius:18px;
   ">
-    <div style="font-size:65px;">👧🏻 ⛄ 👦🏻</div>
+    <div class="story-characters"><img src="assets/noor.png" alt="Noor"><span>⛄</span><img src="assets/finn.png" alt="Finn"></div>
 
     <p>
       Bij het theehuisje hoorden Noor en Finn hard gelach.
@@ -1093,7 +1111,7 @@ footer p { margin: 7px; }
     border:1px solid #c5a75a;
     border-radius:18px;
   ">
-    <div style="font-size:65px;">👧🏻 🐕 👦🏻</div>
+    <div class="story-characters"><img src="assets/noor.png" alt="Noor"><span>🐕</span><img src="assets/finn.png" alt="Finn"></div>
 
     <p>
       Aan de ingang van het kasteelpark bleven Noor en Finn even staan.
@@ -1198,7 +1216,7 @@ footer p { margin: 7px; }
     border:1px solid #d5b75f;
     border-radius:20px;
   ">
-    <div style="font-size:65px;">👧🏻 ⭐ 👦🏻</div>
+    <div class="story-characters"><img src="assets/noor.png" alt="Noor"><span>⭐</span><img src="assets/finn.png" alt="Finn"></div>
 
     <p>
       Noor en Finn waren bijna aan het einde van hun avontuur.
