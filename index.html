@@ -1447,5 +1447,184 @@ body.chapter-mode.active-stop-9 #stop9 {
 })();
 </script>
 
+<style>
+#qr-codes { display: none; }
+
+body.qr-mode > header,
+body.qr-mode > section:not(#qr-codes),
+body.qr-mode > footer {
+  display: none !important;
+}
+
+body.qr-mode #qr-codes {
+  display: block;
+  max-width: 1100px;
+  margin: auto;
+  padding: 35px 20px;
+}
+
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 30px;
+}
+
+.qr-card {
+  background: #fff8e9;
+  color: #173b2a;
+  border: 2px solid #c5a75a;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  break-inside: avoid;
+}
+
+.qr-card h3 {
+  color: #173b2a;
+  font-size: 18px;
+  margin: 8px 0;
+}
+
+.qr-card img {
+  width: 180px;
+  max-width: 100%;
+  display: block;
+  margin: 12px auto;
+}
+
+.qr-card p {
+  font-size: 13px;
+  margin: 5px;
+}
+
+.qr-print {
+  background: #b52c36;
+  color: white;
+  padding: 14px 25px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 15px 5px;
+}
+
+@media(max-width:650px) {
+  .qr-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media print {
+  body, #qr-codes {
+    background: white !important;
+    color: black !important;
+  }
+
+  #qr-codes {
+    display: block !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  .qr-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .qr-card {
+    border: 1px solid #777;
+    padding: 8px;
+  }
+
+  .qr-card img {
+    width: 135px;
+  }
+
+  .qr-print, .qr-back {
+    display: none !important;
+  }
+}
+</style>
+
+<section id="qr-codes">
+  <h2 style="text-align:center;color:#f5d98a;">
+    🎄 De magie van Kerst in Elsloo
+  </h2>
+
+  <h3 style="text-align:center;">
+    Onze negen magische QR-codekaartjes
+  </h3>
+
+  <p style="text-align:center;">
+    Scan de QR-code en ontdek het avontuur van Noor en Finn.
+  </p>
+
+  <div style="text-align:center;">
+    <button class="qr-print" onclick="window.print()">
+      🖨️ Print alle QR-codes
+    </button>
+    <a class="qr-print qr-back" href="/"
+       style="display:inline-block;text-decoration:none;">
+      Terug naar de website
+    </a>
+  </div>
+
+  <div class="qr-grid" id="qr-grid"></div>
+</section>
+
+<script>
+(function() {
+  const stops = [
+    "De Madammerweide",
+    "De Dorpstraat",
+    "De Sint-Augustinuskerk",
+    "De Maas",
+    "De kasteelvijver",
+    "Het kabouterhuisje",
+    "Het theehuisje",
+    "De ingang van het kasteelpark",
+    "Het Slimme Schaap"
+  ];
+
+  const grid = document.getElementById("qr-grid");
+
+  stops.forEach(function(name, index) {
+    const number = index + 1;
+    const target =
+      "https://de-magie-van-kerst-in-elsloo.vercel.app/#stop" + number;
+
+    const card = document.createElement("div");
+    card.className = "qr-card";
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Stopplaats " + number;
+
+    const location = document.createElement("p");
+    location.textContent = name;
+
+    const qr = document.createElement("img");
+    qr.src =
+      "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="
+      + encodeURIComponent(target);
+    qr.alt = "QR-code stopplaats " + number;
+
+    const instruction = document.createElement("p");
+    instruction.textContent = "Scan mij en ontdek het kerstverhaal!";
+
+    card.append(heading, location, qr, instruction);
+    grid.appendChild(card);
+  });
+
+  function updateQRPage() {
+    document.body.classList.toggle(
+      "qr-mode",
+      location.hash === "#qr"
+    );
+  }
+
+  window.addEventListener("hashchange", updateQRPage);
+  updateQRPage();
+})();
+</script>
+
 </body>
 </html>
