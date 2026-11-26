@@ -265,9 +265,14 @@ footer p { margin: 7px; }
     Ga mee met Noor en Finn en ontdek de verborgen kerstmagie
     van ons prachtige dorp.
   </p>
-  <a class="button" href="#verhaal">Ontdek het kerstverhaal</a>
+  
 </header>
-
+<a class="button" href="#verhaal"
+   onclick="if (!localStorage.getItem('kerstwandeling_starttijd')) {
+   localStorage.setItem('kerstwandeling_starttijd', Date.now().toString());
+   }">
+   🎄 Start de kerstwandeling
+</a>
 <section id="verhaal">
   <h2>Welkom in onze magische kerstwereld</h2>
   <p class="intro">
@@ -1659,6 +1664,37 @@ const characterImages = {
 document.querySelectorAll("img[data-character-image]").forEach((image) => {
   image.src = characterImages[image.dataset.characterImage];
 });
+</script>
+  <script>
+(function () {
+  const DUUR = 3 * 60 * 60 * 1000;
+  const SLEUTEL = "kerstwandeling_starttijd";
+
+  function controleerToegang() {
+    const starttijd = localStorage.getItem(SLEUTEL);
+if (!starttijd && /^#stop[1-9]$/.test(location.hash)) {
+  window.location.replace("/");
+  return false;
+}
+    if (starttijd && Date.now() - Number(starttijd) >= DUUR) {
+      document.body.innerHTML = `
+        <div style="background:#123d2b;color:#fff;min-height:100vh;
+        display:flex;align-items:center;justify-content:center;
+        text-align:center;padding:25px;font-family:Georgia,serif">
+          <div>
+            <h1>🎄 De kerstwandeling is afgelopen 🎄</h1>
+            <p>De toegangstijd van 3 uur is verstreken.</p>
+            <p>Bedankt voor jullie deelname!</p>
+          </div>
+        </div>`;
+      return false;
+    }
+    return true;
+  }
+
+  window.controleerKerstToegang = controleerToegang;
+  controleerToegang();
+})();
 </script>
 </body>
 </html>
