@@ -1332,5 +1332,120 @@ footer p { margin: 7px; }
   <p>Met liefde en warmte georganiseerd ❤️</p>
 </footer>
 
+<style>
+body.chapter-mode > header,
+body.chapter-mode > section:not([id^="stop"]) {
+  display: none;
+}
+
+body.chapter-mode > section[id^="stop"] {
+  display: none;
+}
+
+body.chapter-mode.active-stop-1 #stop1,
+body.chapter-mode.active-stop-2 #stop2,
+body.chapter-mode.active-stop-3 #stop3,
+body.chapter-mode.active-stop-4 #stop4,
+body.chapter-mode.active-stop-5 #stop5,
+body.chapter-mode.active-stop-6 #stop6,
+body.chapter-mode.active-stop-7 #stop7,
+body.chapter-mode.active-stop-8 #stop8,
+body.chapter-mode.active-stop-9 #stop9 {
+  display: block;
+}
+
+.chapter-navigation {
+  max-width: 650px;
+  margin: 35px auto 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.chapter-navigation a {
+  display: inline-block;
+  padding: 13px 20px;
+  background: #b52c36;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+}
+
+.chapter-navigation a.back {
+  background: #c5a75a;
+  color: #10291f;
+}
+</style>
+
+<script>
+(function () {
+  const stops = [
+    "De Madammerweide",
+    "De Dorpstraat",
+    "De Sint-Augustinuskerk",
+    "De Maas",
+    "De kasteelvijver",
+    "Het kabouterhuisje",
+    "Het theehuisje",
+    "De ingang van het kasteelpark",
+    "Het Slimme Schaap"
+  ];
+
+  function updatePage() {
+    const match = location.hash.match(/^#stop([1-9])$/);
+    document.body.classList.remove(
+      ...Array.from({length: 9}, (_, i) => "active-stop-" + (i + 1))
+    );
+
+    document.body.classList.toggle("chapter-mode", !!match);
+
+    if (!match) {
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    const number = Number(match[1]);
+    document.body.classList.add("active-stop-" + number);
+
+    const section = document.getElementById("stop" + number);
+    if (!section) return;
+
+    let navigation = section.querySelector(".chapter-navigation");
+
+    if (!navigation) {
+      navigation = document.createElement("div");
+      navigation.className = "chapter-navigation";
+      section.appendChild(navigation);
+    }
+
+    navigation.replaceChildren();
+
+    const back = document.createElement("a");
+    back.href = "/";
+    back.className = "back";
+    back.textContent = "← Terug naar start";
+    navigation.appendChild(back);
+
+    if (number < 9) {
+      const next = document.createElement("a");
+      next.href = "#stop" + (number + 1);
+      next.textContent = "Volgende stopplaats →";
+      navigation.appendChild(next);
+    } else {
+      const finish = document.createElement("a");
+      finish.href = "/";
+      finish.textContent = "Terug naar de startpagina";
+      navigation.appendChild(finish);
+    }
+
+    window.scrollTo(0, 0);
+  }
+
+  window.addEventListener("hashchange", updatePage);
+  updatePage();
+})();
+</script>
+
 </body>
 </html>
